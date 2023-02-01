@@ -4,9 +4,16 @@ import { state } from './state.js';
 const minutesElem = document.querySelector('.time__minutes');
 const secondsElem = document.querySelector('.time__seconds');
 
-const showTime = (seconds) => {
-    minutesElem.textContent = Math.floor( seconds / 60 );
-    secondsElem.textContent = seconds % 60;
+const showTime = (milliseconds) => {
+
+    let minutes = parseInt(milliseconds / 60);
+    let seconds = milliseconds % 60;
+
+    let fMinutes = minutes < 10 ? '0' + minutes : minutes;
+    let fseconds = seconds < 10 ? '0' + seconds : seconds;
+    
+    minutesElem.textContent = fMinutes;
+    secondsElem.textContent = fseconds;
 };
 
 export const startTimer = () => {
